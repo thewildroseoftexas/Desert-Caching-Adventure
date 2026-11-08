@@ -1,0 +1,78 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Desert Mystery</title><style>
+*{box-sizing:border-box}body{margin:0;background:#15221d;color:#fff4d4;font-family:Georgia,serif}.shell{max-width:1550px;margin:auto;padding:8px}.bar{display:flex;justify-content:center;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:8px}button{background:#f8e7bb;color:#30240c;border:1px solid #b9994c;border-radius:8px;padding:10px 14px;font-weight:600;cursor:pointer}.stage{position:relative;width:100%;aspect-ratio:3/2;overflow:hidden}.base,.overlay{position:absolute;inset:0;width:100%;height:100%;object-fit:fill}.overlay{opacity:0;transition:opacity 1.2s ease;pointer-events:none}.overlay.revealed{opacity:1}.zone{position:absolute;transform:translate(-50%,-50%);border:2px solid transparent;background:transparent;border-radius:48%;z-index:45;touch-action:manipulation;cursor:pointer}.debug .zone{border:3px dashed #ffe448;background:#ffdc232b}.zone:disabled{cursor:default}.debug .zone:disabled{border-color:#5fffa2;background:#39f07826}.status{text-align:center;font-size:clamp(23px,3.3vw,43px);margin:12px auto;min-height:1.4em}.note{text-align:center;font-size:15px;color:#e6d5a8}.fly{position:absolute;z-index:50;pointer-events:none;width:7px;height:7px;border-radius:50%;background:#fff9ae;box-shadow:0 0 8px 4px #ffe86a,0 0 19px 8px #ffcc4680;animation:fly 3s ease-in-out forwards;animation-delay:var(--delay)}@keyframes fly{0%{opacity:0;transform:translate(var(--sx),var(--sy)) scale(.4)}25%{opacity:1}55%{transform:translate(12px,-12px)}75%{opacity:.7}100%{opacity:0;transform:translate(var(--ex),var(--ey)) scale(.2)}}.shell:fullscreen{max-width:none;background:#15221d;display:flex;flex-direction:column;justify-content:center}.shell:fullscreen .stage{max-height:84vh;max-width:calc(84vh * 1.5);width:100%;margin:auto}@media(max-width:600px){.shell{padding:3px}.bar button{padding:8px}}
+
+.truck{position:absolute;z-index:30;width:39%;left:58.3%;top:51.6%;transform:translate(-50%,-85%) scale(.62);transform-origin:center 85%;opacity:0;pointer-events:none;filter:drop-shadow(0 5px 4px #4c281a55)}
+.truck.driving{animation:truckApproach 5.2s cubic-bezier(.28,.38,.38,1) forwards}
+@keyframes truckApproach{0%{left:40.5%;top:37%;transform:translate(-50%,-85%) scale(.045);opacity:0}8%{opacity:1}40%{left:45.5%;top:42%;transform:translate(-50%,-85%) scale(.19)}75%{left:52%;top:48%;transform:translate(-50%,-85%) scale(.45)}92%{left:58.3%;top:51.6%;transform:translate(-50%,-85%) scale(.65)}100%{left:58.3%;top:51.6%;transform:translate(-50%,-85%) scale(.62);opacity:1}}
+.dust{position:absolute;z-index:2;left:57%;top:55%;width:6%;aspect-ratio:1;border-radius:50%;pointer-events:none;opacity:0;background:radial-gradient(ellipse,#e7b67eaa 0%,#e5b58055 35%,transparent 70%);filter:blur(6px)}
+.dust.moving{animation:dustTrail 5.8s ease-out forwards}
+@keyframes dustTrail{0%{opacity:0;transform:translate(-40%,-40%) scale(.2)}25%{opacity:.6;transform:translate(-80%,-40%) scale(1.2)}65%{opacity:.75;transform:translate(-115%,-40%) scale(2.3)}100%{opacity:0;transform:translate(-160%,-45%) scale(3.5)}}
+@media(prefers-reduced-motion:reduce){.truck.driving{animation-duration:.1s}.dust.moving{animation:none}}
+
+/* Sky finale */
+.sky-finale{position:absolute;left:33%;top:0%;width:34%;height:19%;z-index:65;pointer-events:none;opacity:0;transition:opacity 1.5s ease}
+.sky-finale.visible{opacity:1}
+.sky-coords{position:absolute;left:8%;top:29%;width:84%;text-align:center;color:rgba(174,181,222,.92);font-family:"URW Chancery L","Apple Chancery","Brush Script MT","Segoe Script",cursive;font-style:italic;font-size:clamp(14.4px,2.28vw,34.8px);line-height:1.17;letter-spacing:.015em;text-shadow:0 1px 2px rgba(240,247,255,.22);opacity:0;transition:opacity 8s ease-in-out;visibility:visible;white-space:nowrap}
+.sky-finale.show-coords .sky-coords{opacity:1;visibility:visible}
+.sky-fly{position:absolute;width:5px;height:5px;border-radius:50%;background:#fff5b2;box-shadow:0 0 5px 2px #ffe47d,0 0 12px 5px #ffd06d77;pointer-events:none;opacity:0;z-index:64;animation:skyFlyToClouds var(--duration) ease-in-out var(--delay) forwards}
+@keyframes skyFlyToClouds{0%{opacity:0;left:var(--sx);top:var(--sy);transform:translate(-50%,-50%) scale(.3)}12%{opacity:.95}45%{left:var(--mx);top:var(--my);opacity:1;transform:translate(-50%,-50%) scale(1.2)}78%{left:var(--ex);top:var(--ey);opacity:.85;transform:translate(-50%,-50%) scale(.8)}100%{left:var(--ex);top:var(--ey);opacity:0;transform:translate(-50%,-50%) scale(.1)}}
+@media(max-width:600px){.sky-coords{font-size:clamp(10.8px,3.36vw,21.6px)}}
+</style><!--
+THE DESERT KEEPS ITS SECRETS
+
+Beneath the sun, where shadows play,
+The desert whispers along the way.
+Its ancient stones have tales untold,
+Of quiet wonders and secrets old.
+
+Look beyond what first appears,
+Let curiosity guide your gears.
+For not all treasures shine like gold,
+And not all mysteries wish to be told.
+
+Take your time, enjoy the view,
+Let the desert share its gifts with you.
+No need to rush, no race to run,
+The joy's in the journey, the search, the fun.
+
+So wander awhile, let wonder grow,
+There's more to discover than you may know.
+And when your desert adventure is through,
+May the mystery leave its magic with you.
+-->
+</head><body><main id="shell" class="shell"><div class="bar"><button id="reset">Start Over</button><button id="full">Full Screen</button><span id="count">0 / 7 revealed</span></div><div id="stage" class="stage"><img class="base" src="scene_00.png" alt="Desert canyon before wildlife appears"></div><div class="status" id="status" aria-live="polite">Discover the desert wildlife in the secret order!</div></main><script>
+const animals=[{"name": "Jackrabbit", "key": "rabbit", "x": 27.9, "y": 52.9, "w": 15.8, "h": 23.0}, {"name": "Hawk", "key": "hawk", "x": 93.0, "y": 9.8, "w": 11.0, "h": 16.5}, {"name": "Roadrunner", "key": "roadrunner", "x": 93.4, "y": 53.8, "w": 13.5, "h": 18.5}, {"name": "Rattlesnake", "key": "rattlesnake", "x": 85.2, "y": 85.4, "w": 20.0, "h": 18.0}, {"name": "Ground Squirrel", "key": "squirrel", "x": 73.1, "y": 80.0, "w": 11.8, "h": 16.0}, {"name": "Scorpion", "key": "scorpion", "x": 44.3, "y": 78.4, "w": 14.2, "h": 15.0}, {"name": "Lizard", "key": "lizard", "x": 16.0, "y": 80.5, "w": 24.0, "h": 22.0}];
+const stage=document.getElementById('stage'),status=document.getElementById('status'),count=document.getElementById('count');let timers=[];let found=new Set();const order=['rattlesnake','rabbit','hawk','lizard','squirrel','scorpion','roadrunner'];
+const imageFiles={"rattlesnake":"asset_bcj.png","rabbit":"asset_hfv.png","hawk":"asset_lqz.png","lizard":"asset_ckb.png","squirrel":"asset_ajv.png","scorpion":"asset_dfp.png","roadrunner":"asset_wqh.png"};
+for(const a of animals){const img=document.createElement('img');img.src=imageFiles[a.key];img.className='overlay';img.id='reveal-'+a.key;img.alt='';img.onerror=()=>{status.textContent='Missing image file: '+imageFiles[a.key];};stage.appendChild(img)}
+const dust=document.createElement('span');dust.className='dust';stage.appendChild(dust);
+const finale=document.createElement('div');finale.className='sky-finale';finale.innerHTML='<div class="sky-coords">N 29° 36.155<br>W 098° 25.166</div>';stage.appendChild(finale);const coordinateText=finale.querySelector('.sky-coords');
+const animalMessages={rattlesnake:"Well, well! You've rattled up the first clue on this desert cache hunt!",rabbit:"Hop to it, geocacher! There's more than one mystery hiding along this trail!",hawk:"From high above, I can spot a cache hiding where others overlook!",lizard:"The desert holds its secrets beneath the sun. Keep your geo-senses sharp!",squirrel:"I've been squirreling away a little treasure. But is it a geocache?",scorpion:"Tread carefully, cacher! You're getting closer to the final coordinates!",roadrunner:"Beep, beep! Seven desert secrets discovered! Hear that engine coming down the trail?"};
+function finalDiscovery(){
+ finale.classList.add('visible');finale.style.opacity='1';coordinateText.style.opacity='0';
+ // Individual fireflies rise from BIG RED and scatter naturally into the approved sky area.
+ // They fade away; no oval, synchronized ring, or perpetual rotation.
+ for(let i=0;i<50;i++){
+  const f=document.createElement('span');f.className='sky-fly';
+  const sx=56+(Math.random()-.5)*13,sy=49+(Math.random()-.5)*7;
+  const ex=43+(Math.random()-.5)*30,ey=7+(Math.random()-.5)*15;
+  const mx=(sx+ex)/2+(Math.random()-.5)*14,my=23+(Math.random()-.5)*12;
+  f.style.setProperty('--sx',sx+'%');f.style.setProperty('--sy',sy+'%');
+  f.style.setProperty('--mx',mx+'%');f.style.setProperty('--my',my+'%');
+  f.style.setProperty('--ex',ex+'%');f.style.setProperty('--ey',ey+'%');
+  const delay=Math.random()*2.4,duration=5.1+Math.random()*2.4;
+  f.style.setProperty('--delay',delay+'s');f.style.setProperty('--duration',duration+'s');
+  stage.appendChild(f);
+  timers.push(setTimeout(()=>f.remove(),Math.ceil((delay+duration+.2)*1000)));
+ }
+ timers.push(setTimeout(()=>{finale.classList.add('show-coords');coordinateText.style.opacity='1';status.textContent='The desert has revealed its final geocache coordinates!';},7600));
+}
+const truck=document.createElement('img');truck.src='asset_uys.png';truck.alt='Red Ford F-250 Crew Cab arriving on the desert road';truck.className='truck';stage.appendChild(truck);
+function truckArrival(){truck.classList.remove('driving');dust.classList.remove('moving');void truck.offsetWidth;truck.classList.add('driving');dust.classList.add('moving');status.textContent='BIG RED is approaching along the desert road!';timers.push(setTimeout(()=>{status.textContent='BIG RED has arrived! Looks like this desert trail leads to one final discovery!';finalDiscovery();},5300))}
+for(const a of animals){const btn=document.createElement('button');btn.className='zone';btn.setAttribute('aria-label','Reveal '+a.name);btn.style.left=a.x+'%';btn.style.top=a.y+'%';btn.style.width=a.w+'%';btn.style.height=a.h+'%';btn.addEventListener('click',()=>reveal(a,btn));stage.appendChild(btn)}
+function fireflies(a){[['-35px','10px','-30px','-35px'],['0px','-45px','15px','-30px'],['35px','8px','30px','30px']].forEach((p,i)=>{const f=document.createElement('span');f.className='fly';f.style.left=a.x+'%';f.style.top=a.y+'%';f.style.setProperty('--sx',p[0]);f.style.setProperty('--sy',p[1]);f.style.setProperty('--ex',p[2]);f.style.setProperty('--ey',p[3]);f.style.setProperty('--delay',i*.12+'s');stage.appendChild(f);timers.push(setTimeout(()=>f.remove(),3400))})}
+function reveal(a,btn){if(found.has(a.key))return;if(a.key!==order[found.size]){status.textContent='The desert holds its secrets. Try another place!';return;}found.add(a.key);btn.disabled=true;const animalLayer=document.getElementById('reveal-'+a.key);animalLayer.classList.add('revealed');animalLayer.style.zIndex=String(10+found.size);fireflies(a);count.textContent=found.size+' / 7 revealed';status.textContent=animalMessages[a.key];if(found.size===7)timers.push(setTimeout(truckArrival,4000))}
+document.getElementById('reset').addEventListener('click',()=>{timers.forEach(clearTimeout);timers=[];stage.querySelectorAll('.fly,.sky-fly').forEach(e=>e.remove());found.clear();finale.classList.remove('visible','show-coords');finale.style.opacity='0';coordinateText.style.opacity='0';truck.classList.remove('driving');dust.classList.remove('moving');stage.querySelectorAll('.zone').forEach(e=>e.disabled=false);stage.querySelectorAll('.overlay').forEach(e=>{e.classList.remove('revealed');e.style.zIndex='';});status.textContent='Discover the desert wildlife in the secret order!';count.textContent='0 / 7 revealed'});
+
+document.getElementById('full').addEventListener('click',async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.getElementById('shell').requestFullscreen()}catch(e){status.textContent='Full Screen is unavailable in this browser.'}});document.addEventListener('fullscreenchange',()=>document.getElementById('full').textContent=document.fullscreenElement?'Exit Full Screen':'Full Screen');
+</script></body></html>
